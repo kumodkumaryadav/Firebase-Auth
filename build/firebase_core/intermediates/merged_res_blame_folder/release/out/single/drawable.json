@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\cbnits-308\\Desktop\\firebase_login\\build\\firebase_core\\intermediates\\merged_res\\release\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\cbnits-308\\.gradle\\caches\\transforms-3\\a4c5c816f8126e4dc826dd0348dc00dd\\transformed\\core-1.6.0\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\cbnits-308\\Desktop\\firebase_login\\build\\firebase_core\\intermediates\\merged_res\\release\\drawable\\notification_bg.xml",
+        "source": "C:\\Users\\cbnits-308\\.gradle\\caches\\transforms-3\\a4c5c816f8126e4dc826dd0348dc00dd\\transformed\\core-1.6.0\\res\\drawable\\notification_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\cbnits-308\\Desktop\\firebase_login\\build\\firebase_core\\intermediates\\merged_res\\release\\drawable\\notification_bg_low.xml",
+        "source": "C:\\Users\\cbnits-308\\.gradle\\caches\\transforms-3\\a4c5c816f8126e4dc826dd0348dc00dd\\transformed\\core-1.6.0\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "C:\\Users\\cbnits-308\\Desktop\\firebase_login\\build\\firebase_core\\intermediates\\merged_res\\release\\drawable\\notification_tile_bg.xml",
+        "source": "C:\\Users\\cbnits-308\\.gradle\\caches\\transforms-3\\a4c5c816f8126e4dc826dd0348dc00dd\\transformed\\core-1.6.0\\res\\drawable\\notification_tile_bg.xml"
+    }
+]

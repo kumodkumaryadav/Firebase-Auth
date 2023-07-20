@@ -1,4 +1,6 @@
 import 'package:firebase_login/firebase%20service/auth.dart';
+import 'package:firebase_login/screens/home_screen.dart';
+import 'package:firebase_login/widget_tree.dart';
 import 'package:flutter/material.dart';
 
 
@@ -21,6 +23,11 @@ class _OTPScreenState extends State<OTPScreen> {
   // This is the entered code
   // It will be displayed in a Text widget
   String? _otp;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +55,24 @@ class _OTPScreenState extends State<OTPScreen> {
             height: 30,
           ),
           ElevatedButton(
-              onPressed: () {
-                setState(() {
+              onPressed: () 
+                 async {
                   _otp = _fieldOne.text +
                       _fieldTwo.text +
                       _fieldThree.text +
                       _fieldFour.text + _fieldFive.text + _fieldSix.text;
-                });
-                Auth().signInWithPhone(_otp!);
-              },
+                      debugPrint("otp----------------------------$_otp");
+                      debugPrint("verrrrrrrrrrrrrrrrrrrr------${Auth.verificationId}");
+                      setState(() {
+                        
+                      });
+              dynamic isverified= await Auth().signInWithPhone(_otp!);
+            if(isverified !=null) Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const WidgetTree(),));
+              
+              print("isverified------------------${isverified.toString()}");
+
+                },
+              
               child: const Text('Submit')),
           const SizedBox(
             height: 30,

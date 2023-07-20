@@ -1,11 +1,14 @@
 
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 class Auth {
 final FirebaseAuth _firebaseAuth=FirebaseAuth.instance;
 User? get currentUser=> _firebaseAuth.currentUser;
 Stream<User?> get authStateChanges=>_firebaseAuth.authStateChanges();
+ static String verificationId="";
 
 //method for signing via EmailPassword 
 Future<void> signInWithEmailAndPassword({
@@ -37,29 +40,35 @@ Future signInWithGoogle()async{
 //method for getting token
 Future<String?> getDeviceToken() async {
   String? token;
-   await currentUser!.getIdTokenResult().then((result){
-      token=result.token.toString();
+   await FirebaseMessaging.instance.getToken().then((result){
+      token=result;
     });
     return  token;
 }
-String verificationId="";
+
 
 veryfyPhoneNumber(String phoneNumner)async {
   await _firebaseAuth.verifyPhoneNumber(
     phoneNumber: phoneNumner,
-    timeout: Duration(seconds: 60),
+    timeout: const Duration(seconds: 90),
     verificationCompleted: (AuthCredential authCredential){
       
     },
      verificationFailed: (FirebaseAuthException exception){}, 
      codeSent: (String? verId, int? codeForceReSend){
       verificationId=verId!;
+      debugPrint("verification id -------------------------$verificationId");
+      debugPrint("varid -------------------------$verId");
      }, 
      codeAutoRetrievalTimeout: (String verId){});
 }
 
 signInWithPhone(String smsCode)async{
- return await _firebaseAuth.signInWithCredential(PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode));
+  debugPrint("otp sms code from controller-------------------------$smsCode");
+      debugPrint("verification id2 -------------------------$verificationId");
+
+ return await _firebaseAuth.signInWithCredential(
+  PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode));
 }
 //method for signOut
 Future<void> signOut() async{

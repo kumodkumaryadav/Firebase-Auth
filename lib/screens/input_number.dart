@@ -6,10 +6,15 @@ import 'otp_screen.dart';
 
 
 
-class InputNumber extends StatelessWidget {
+class InputNumber extends StatefulWidget {
    InputNumber({super.key});
+
+  @override
+  State<InputNumber> createState() => _InputNumberState();
+}
+
+class _InputNumberState extends State<InputNumber> {
   final TextEditingController _controllerNumber=TextEditingController();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +45,10 @@ class InputNumber extends StatelessWidget {
                 ),
                const SizedBox(height: 20,),
                 ElevatedButton(onPressed: (){
-                  Auth().veryfyPhoneNumber("+91${_controllerNumber.text}");
+               
+                
+                    Auth().veryfyPhoneNumber("+91${_controllerNumber.text}");
+        
                   Navigator.push(context, MaterialPageRoute(builder: (context) => OTPScreen(),));
 
                 }, child: const Text("Submit"))

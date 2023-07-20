@@ -14,16 +14,8 @@ class _HomePageState extends State<HomePage> {
   final User? user = Auth().currentUser;
   String token = '';
   //why we need this method ? since we can not call future function directly in to the inItState
-  getToken() async {
-    token = await Auth().getDeviceToken() ?? '';
-    setState(() {});
-  }
+ 
 
-  @override
-  initState() {
-    getToken();
-    super.initState();
-  }
 
   Future<void> signOut() async {
     await Auth().signOut();
@@ -34,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _userUid() {
-    return Text(user?.email ?? 'User email');
+    return Text(user?.email ?? user!.phoneNumber.toString() );
   }
 
   Widget _userPhoto() {
@@ -42,10 +34,6 @@ class _HomePageState extends State<HomePage> {
       backgroundImage: NetworkImage(user?.photoURL ?? 'user photo'),
       radius: 50,
     );
-  }
-
-  Widget _userToken() {
-    return Text(user!.getIdToken() as String);
   }
 
   Widget _signOutButton() {
